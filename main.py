@@ -10,7 +10,7 @@ import time
 import keep_alive
 keep_alive.keep_alive()
 from oauth2client.service_account import ServiceAccountCredentials
-pd.options.display.max_rows = 999
+pd.options.display.max_rows = 1000
 
 # define the scope
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
