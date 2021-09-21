@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "botcommandsapi",
+  "private_key_id": "13a11bccb601c45ac752732c6c2f864335b8844e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQC47rGEr0MUvUNL\nD7LljyHnhGSlWBvxZIYwzZxs1euFkMOHWoNENDPFsgqZifeQXj7ZV1KlHVeE3i1/\nfJRnNC79Rs7LWxJsHDFwfMzpAIfrg/UwlA0GOfGI4qQ5j/TToVyylW3XzqP/3btU\npOWZN2mgPP+oYnn29quxemtwz870lb6x9KCr+9WCMHP9byzyg94Ivx9oXLOlJY6/\nbTOA8M91bTdzpi6Q8Z1RLVd76uvRwt59SB5gYDoqvFgU1tNEUD0Y41i9hsEa5Abb\nSV9/4HH047jNVPLM3Bx1fraWDoS9dIL3O7AGHK6Jk9ydzM+Fuz2ywHydSMJE4jdQ\nCYLoR8+JAgMBAAECggEABRve/pXi6gdCfSfdXtch7iXrq9+vwe7vgBimCiGsxH9X\nz3zyJGe2yG7fORelJbFc1h9B8rrJSKvkoOF9rg40gB29J8QH0cHDoeJovMUdfCWk\nl+d3JqViJVBxjf+KmXAbQfm705rrT+29t5xolV+BBQK6Y1n5GZf97US/BBpRktMm\nMEJpgr7ojXeQXmfNChYL3T7dCu0c3FekNUojDjNNBOg/8Dx2xwhce/WaBqmGIT2u\n4NWBBsAMXl1lVTpFsvc4TK09zws1hmrty7HaUHK1eEyyXAtdTd6W6W7g+eej19rL\nXUTGyUzkK4oY8LyhOT6HMOQd0/WKVSWXthzJAhNhqQKBgQDbftqMHtRJI8QpP1iu\nc5DO5wTtZfLLsVaqQ0NTOOwVYkDXqR55pl72WAl58ZxrBd91esqZivPp31f+VFIx\ngwyBK5UTd1HUyx1rE6hwwv8faCZpimkI3grbGy/SKyTZm8exWNn6UxtNzBv/DDvB\n4rtZpY4NPQovPE1QsJtCL9GR7QKBgQDXsEuH+uPrDVCsBzyt4Ud6+gh9HwZSXDrX\noKp/utp9GmrSrbLm1H7IlJgqtLgD1Zm5rK3BUNo7u8P6XK05KGzp92jtEpgah9it\nXcWNoD5xugim5Mo2QSAvmqxwgJnQiCsyd4xVU3dg0hMNUE1CQR3yajFqEBc5gKN8\nHxzuqLYwjQJ/G2+/4cP4xSuzWXSRoTzQ3QwDkakssEl6i83cnIqA+CtP76U0KgCh\n3ikjBhstcjNJu2Wd7ZNw6csBNMlVfNrktUC9YbGIiRDanIfYhj/ZpBNgudCTUIhw\n0vKTB7Jc6NaQH5r7pE6/GvpohXkB/zpYMNyA5Sa8HytqfquUvLE9gQKBgHyCQJfW\ntQtTPGaSJu0ZRvIutAfGiReyNiWTkdj6PHZLca78pnGp6SZQ4SaF/FP6UitlC0i1\nK8WftpooNbbxJy5IrEFuom9uTB6IKyp+fo2YHrZ5DGIVZkcUusaW9jPy5zzS1ifL\nbvZtTqI44OCGRotR0gSwFTgUkktsin8a1VFhAoGAIW5FSy85FFIYXmTEh1QDISWH\nQ58siWZE3MZMjXmuylF6WeMRfmlQmgQjoC6mh7Yv11NqM8+/JJVp0lVQV6FPXI7o\ndJn1GyiCsQdYZXicrLltitS6iuBNeIjM9aSqtBUMHNpmzqY0GORMFFHMdh20JF79\nNk53Ih+ksr8XX+kol8E=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dumbotapiservice@botcommandsapi.iam.gserviceaccount.com",
+  "client_id": "105439923464634288366",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dumbotapiservice%40botcommandsapi.iam.gserviceaccount.com"
+}
