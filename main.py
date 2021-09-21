@@ -92,7 +92,7 @@ async def on_message(message):
   if msg.startswith('?'):
     if msg in cmd_dict.keys():
       await message.channel.send(cmd_dict[msg])
-    elif msg not in cmd_dict.keys() and msg not in other_cmds_:
+    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and msg != '?':
       await message.channel.send('That command is invalid. Please refer to the  <#874182927905333289> channel for a list of possible commands.')
 
   if msg.startswith('?gm'):
