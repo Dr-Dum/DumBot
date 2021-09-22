@@ -64,9 +64,12 @@ df_cmd = pd.DataFrame({'Commands': cmd_list})
 df_cmd_ = df_cmd.sort_values('Commands',ascending=True).reset_index(drop=True)
 #print(df_cmd_)
 
-other_cmds_ = ['?gm','?av','?check_commands','?dumbot','?restart_dumbot']
-
 other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?restart_dumbot**':'Restart dumbot after commands have been added.'}
+
+other_cmds_ = []
+
+for item in other_cmds.keys():
+  other_cmds_.append(item.strip('*'))
 
 df_other_cmds = pd.DataFrame(other_cmds, index=['Misc Commands']).T
 #print(df_other_cmds)
