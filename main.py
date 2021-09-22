@@ -1,6 +1,5 @@
 import os
 import discord
-from discord.ext.commands import Bot
 import pandas as pd
 import requests
 import json
@@ -98,11 +97,6 @@ async def on_message(message):
   #check to make sure message is not from bot
   if message.author == client.user:
     return
-
-  #print(message.author.id)
-  #print(message.author.avatar_url)
-  #print(message.mentions[0].avatar_url)
-  #print(message.mentions)
 
   msg = message.content.lower()
   if msg.startswith('?'):
