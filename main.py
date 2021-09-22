@@ -71,25 +71,14 @@ other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':
 df_other_cmds = pd.DataFrame(other_cmds, index=['Misc Commands']).T
 #print(df_other_cmds)
 
-cmd_update_msg = '> **Please dm @Dr Dum#3527 if you have any commands you would like added.**'
-
-status_msg = "> **Additionally if you think dumbot has gone down, please dm Dr Dum. You can see its current status at this url: https://stats.uptimerobot.com/JKrx3tBq8j/788943864 **"
+github_msg = "If you're interested in seeing the dumbot code, please feel free to check out the github page here: https://github.com/HerrDoktorDum/DumBot"
 
 #Register event with callback
 @client.event
 #Call when bot is ready to be used
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
-'''
-client = Bot(command_prefix='-')
 
-@client.command(name='avatar', help='fetch avatar of a user')
-async def dp(ctx, *, member: discord.Member = None):
-    if not member:
-      member = ctx.message.author
-    userAvatar = member.avatar_url
-    await ctx.send(userAvatar)
-'''
 #Register event with callback
 @client.event
 #Send message if command sent
@@ -130,6 +119,9 @@ async def on_message(message):
     await message.channel.send('> **List of Misc. Commands:**')
     await message.channel.send(df_other_cmds)
     await message.channel.send(cmd_dict['troublemsg'])
+    await message.channel.send(github_msg)
+    
+
 
   if msg.startswith('?restart_dumbot'):
     await message.channel.send('Restarting to refresh command database...')
