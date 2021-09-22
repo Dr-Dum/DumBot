@@ -15,8 +15,10 @@ pd.options.display.max_rows = 1000
 # define the scope
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
+auth_creds = json.loads(os.getenv("GoogleAuthJson"))
+
 # add credentials to the account
-creds = ServiceAccountCredentials.from_json_keyfile_name('botcommandsapi.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(auth_creds,scope)
 
 # authorize the clientsheet 
 client_ = gspread.authorize(creds)
