@@ -5,6 +5,7 @@ import requests
 import json
 import gspread
 import sys
+import numpy as np
 import time
 
 import keep_alive
@@ -62,7 +63,9 @@ client = discord.Client()
 cmd_list = cmd_dict.keys()
 df_cmd = pd.DataFrame({'Commands': cmd_list})
 df_cmd_ = df_cmd.sort_values('Commands',ascending=True).reset_index(drop=True)
-#print(df_cmd_)
+df_cmd_split = np.array_split(df_cmd_, 2)
+df_cmd_split_1 = df_cmd_split[0]
+df_cmd_split_2 = df_cmd_split[1]
 
 other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?restart_dumbot**':'Restart dumbot after commands have been added.'}
 
@@ -114,11 +117,13 @@ async def on_message(message):
         counter += 1
   if msg.startswith('?check_commands'):
     await message.channel.send('> **List of Database commands:**')
-    await message.channel.send(df_cmd_)
+    await message.channel.send(df_cmd_split_1)
+    await message.channel.send(df_cmd_split_2)
 
   if msg.startswith('?dumbot'):
     await message.channel.send('> **List of Database commands:**')
-    await message.channel.send(df_cmd_)
+    await message.channel.send(df_cmd_split_1)
+    await message.channel.send(df_cmd_split_2)
     await message.channel.send('> **List of Misc. Commands:**')
     await message.channel.send(df_other_cmds)
     await message.channel.send(cmd_dict['troublemsg'])
