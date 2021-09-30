@@ -118,12 +118,13 @@ async def on_message(message):
   if msg.startswith('?check_commands'):
     await message.channel.send('> **List of Database commands:**')
     await message.channel.send(df_cmd_split_1)
-    await message.channel.send(df_cmd_split_2)
+    await message.channel.send(df_cmd_split_2.to_string(header=False))
 
   if msg.startswith('?dumbot'):
     await message.channel.send('> **List of Database commands:**')
     await message.channel.send(df_cmd_split_1)
-    await message.channel.send(df_cmd_split_2)
+    #await message.channel.send(df_cmd_split_2)
+    await message.channel.send(df_cmd_split_2.to_string(header=False))
     await message.channel.send('> **List of Misc. Commands:**')
     await message.channel.send(df_other_cmds)
     await message.channel.send(cmd_dict['troublemsg'])
