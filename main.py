@@ -42,6 +42,8 @@ cmd_dict = {}
 for index, row in records_df.iterrows():
   cmd_dict[row['Command']] =  row['Link']
 
+troub_msg = cmd_dict['troublemsg']
+del cmd_dict['troublemsg']
 #print(cmd_dict)
 
 #pull token
@@ -63,6 +65,8 @@ client = discord.Client()
 cmd_list = cmd_dict.keys()
 df_cmd = pd.DataFrame({'Commands': cmd_list})
 df_cmd_ = df_cmd.sort_values('Commands',ascending=True).reset_index(drop=True)
+#troub_msg = df_cmd_.loc[df_cmd_['Commands'] == 'troublemsg']
+#print(troub_msg) 
 df_cmd_split = np.array_split(df_cmd_, 2)
 df_cmd_split_1 = df_cmd_split[0]
 df_cmd_split_2 = df_cmd_split[1]
@@ -127,11 +131,9 @@ async def on_message(message):
     await message.channel.send(df_cmd_split_2.to_string(header=False))
     await message.channel.send('> **List of Misc. Commands:**')
     await message.channel.send(df_other_cmds)
-    await message.channel.send(cmd_dict['troublemsg'])
+    await message.channel.send(troub_msg)
     await message.channel.send(github_msg)
     
-
-
   if msg.startswith('?restart_dumbot'):
     await message.channel.send('Restarting to refresh command database...')
     time.sleep(5)
