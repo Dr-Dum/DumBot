@@ -71,7 +71,7 @@ df_cmd_split = np.array_split(df_cmd_, 2)
 df_cmd_split_1 = df_cmd_split[0]
 df_cmd_split_2 = df_cmd_split[1]
 
-other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?restart_dumbot**':'Restart dumbot after commands have been added.'}
+other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?restart_dumbot**':'Restart dumbot after commands have been added.','**?sit**': 'Kick user from discord (Req. normal kick perms)','**?banhammer**': 'Ban user from discord (Req. normal ban perms)'}
 
 other_cmds_ = []
 
@@ -108,6 +108,18 @@ async def on_message(message):
     quote = get_quote()
     await message.channel.send(quote)
 
+  if msg.startswith('?sit'):
+    '''
+    if 'PCM' in message.author.roles or 'ROBIT' in message.author.roles:
+      await message.channel.send('{} has the correct role'.format(message.author))
+    else:
+      await message.channel.send('{} is too low in the user hierarcht to use this'.format(message.author))
+    '''
+    await message.channel.send('This command is still in development. please harradd Dr Dum to finish working on this.')
+    
+  if msg.startswith('?banhammer'):
+    await message.channel.send('This command is still in development. Please harrass Dr Dum to finish working on this.')
+
   if msg.startswith('?av'):
     users_taged = message.mentions
     if len(users_taged) == 0:
@@ -140,10 +152,3 @@ async def on_message(message):
     await message.channel.send("Dumbot's database has been updated. It may take up to a minute for the commands to become available.")
     os.execl(sys.executable, sys.executable, *sys.argv)
 client.run(token)
-
-
-
-
-
-
-
