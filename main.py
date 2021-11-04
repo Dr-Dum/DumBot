@@ -9,7 +9,8 @@ import numpy as np
 import time
 
 import keep_alive
-keep_alive.keep_alive()
+keep_alive.awake("https://DumBot.drdum.repl.co", False)
+
 from oauth2client.service_account import ServiceAccountCredentials
 pd.options.display.max_rows = 1000
 
@@ -75,6 +76,8 @@ other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':
 
 other_cmds_ = []
 
+admin_roles = {'PCM':608926975054315533,'Admin': 539133957136973834}
+
 for item in other_cmds.keys():
   other_cmds_.append(item.strip('*'))
 
@@ -99,9 +102,11 @@ async def on_message(message):
 
   msg = message.content.lower()
   if msg.startswith('?'):
+    split_msg = msg.split('@')
+    #print(split_msg[0].split())
     if msg in cmd_dict.keys():
       await message.channel.send(cmd_dict[msg])
-    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and set(msg) != set('?') and not msg.startswith('? ') and not msg.startswith('?av'):
+    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and set(msg) != set('?') and not msg.startswith('? ') and split_msg[0].split()[0] not in other_cmds_:
       await message.channel.send('That command is invalid. Please refer to the  <#874182927905333289> channel for a list of possible commands.')
 
   if msg.startswith('?gm'):
@@ -109,16 +114,51 @@ async def on_message(message):
     await message.channel.send(quote)
 
   if msg.startswith('?sit'):
-    '''
-    if 'PCM' in message.author.roles or 'ROBIT' in message.author.roles:
+    #print(message.author.roles)
+    for role_key in admin_roles.keys():
+      if str(admin_roles[role_key]) in str(message.author.roles):
+        set_allowed = True
+        break
+
+    if set_allowed == True:
       await message.channel.send('{} has the correct role'.format(message.author))
+      print(message.author.roles)
+      print(message.author.roles.positions)
+      print(message.mentions)
+      print(message.mentions.members)
+      print(message.mentions.members.first())
+      print(message.mentions.top_role)
+      
+      '''
+      if message.member.highestRole.comparePositionTo(message.mentions.members.first().highestRole) > 0:
+        await message.channel.send('Kicking is permitted.')
+      else:
+        await message.channel.send('Too low in heirarchy to kick this user.')
+      '''
+      
     else:
-      await message.channel.send('{} is too low in the user hierarcht to use this'.format(message.author))
-    '''
-    await message.channel.send('This command is still in development. please harradd Dr Dum to finish working on this.')
+      await message.channel.send('{} is too low in the user hierarchy to use this'.format(message.author))
+
+    #await message.channel.send('This command is still in development. Please harrass Dr Dum to finish working on this.')
     
   if msg.startswith('?banhammer'):
-    await message.channel.send('This command is still in development. Please harrass Dr Dum to finish working on this.')
+    for role_key in admin_roles.keys():
+      if str(admin_roles[role_key]) in str(message.author.roles):
+        set_allowed = True
+        break
+
+    if set_allowed == True:
+      await message.channel.send('{} has the correct role'.format(message.author))
+      if message.member.highestRole.comparePositionTo(message.mentions.members.first().highestRole) > 0:
+        await message.channel.send('Kicking is permitted.')
+      else:
+        await message.channel.send('Too low in heirarchy to kick this user.')
+    else:
+      await message.channel.send('{} is too low in the user hierarchy to use this'.format(message.author))
+      
+  
+
+    #await message.channel.send('This command is still in development. Please harrass Dr Dum to finish working on this.')
 
   if msg.startswith('?av'):
     users_taged = message.mentions
