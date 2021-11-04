@@ -14,7 +14,7 @@ from datetime import datetime
 # datetime object containing current date and time
 now = datetime.now()
 
-logging.basicConfig(filename="log.log",
+logging.basicConfig(filename="LogFiles/log {}.log".format(now),
 level=logging.DEBUG, 
 format= '[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s',datefmt='%H:%M:%S')
 logging.info("___________NEW RUN STARTING___________")

@@ -25,7 +25,7 @@ def ping(target, debug):
       if(debug == True):
         #print("Status Code: " + str(stat_code))
         logserv.info("Status code: {}".format(str(stat_code)))
-      time.sleep(random.randint(10,30)) #alternate ping time between 3 and 5 minutes
+      time.sleep(random.randint(180,300)) #alternate ping time between 3 and 5 minutes
 
 def awake(target, debug=False):  
     log = logging.getLogger('werkzeug')
