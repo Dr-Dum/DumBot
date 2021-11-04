@@ -7,9 +7,21 @@ import gspread
 import sys
 import numpy as np
 import time
+import logging
+
+from datetime import datetime
+
+# datetime object containing current date and time
+now = datetime.now()
+
+logging.basicConfig(filename="log.log",
+level=logging.DEBUG, 
+format= '[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s',datefmt='%H:%M:%S')
+logging.info("___________NEW RUN STARTING___________")
+logging.info("Code started at: {}".format(now))
 
 import keep_alive
-keep_alive.awake("https://DumBot.drdum.repl.co", False)
+keep_alive.awake("https://DumBot.drdum.repl.co", True)
 
 from oauth2client.service_account import ServiceAccountCredentials
 pd.options.display.max_rows = 1000
