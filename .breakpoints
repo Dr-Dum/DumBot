@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "LogFiles/log 2021-11-04 04:38:00.068901.log": [
+      {
+        "id": "1a899470-923e-4a6f-85ae-a5e0f92697ec",
+        "line": 40,
+        "version": 1,
+        "index": 7967
+      }
+    ]
+  }
 }

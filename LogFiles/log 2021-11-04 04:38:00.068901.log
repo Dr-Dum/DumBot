@@ -49,3 +49,42 @@
 [04:39:24] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
 [04:39:24] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
 [04:39:24] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:40:05] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 2.
+[04:40:05] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[04:40:05] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[04:40:05] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:40:46] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 2.
+[04:40:46] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[04:40:46] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[04:40:46] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:41:28] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 2.
+[04:41:28] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[04:41:28] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[04:41:28] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:42:00] {/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py:971} DEBUG - Starting new HTTPS connection (1): dumbot.drdum.repl.co:443
+[04:42:00] {/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py:452} DEBUG - https://dumbot.drdum.repl.co:443 "GET / HTTP/1.1" 200 17
+[04:42:00] {/home/runner/DumBot/keep_alive.py:27} INFO - Status code: 200
+[04:42:09] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 2.
+[04:42:09] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[04:42:09] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[04:42:09] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:42:50] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 2.
+[04:42:50] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[04:42:50] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[04:42:50] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:43:31] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 2.
+[04:43:31] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[04:43:31] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[04:43:31] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:44:13] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 2.
+[04:44:13] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[04:44:13] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[04:44:13] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:44:54] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 2.
+[04:44:54] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[04:44:54] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[04:44:54] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[04:45:02] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:718} INFO - Cleaning up tasks.
+[04:45:02] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:71} INFO - Cleaning up after 1 tasks.
+[04:45:02] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:76} INFO - All tasks finished cancelling.
+[04:45:02] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:94} INFO - Closing the event loop.

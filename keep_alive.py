@@ -17,9 +17,9 @@ def home():
 def run():
   app.run(host='0.0.0.0',port=random.randint(2000,9000)) 
 
-def ping(target, debug):
+def ping(target, debug, now):
     while(True):
-      logserv = logging.getLogger("log") 
+      logserv = logging.getLogger("log {}".format(now)) 
       r = requests.get(target)
       stat_code = r.status_code
       if(debug == True):
@@ -27,11 +27,11 @@ def ping(target, debug):
         logserv.info("Status code: {}".format(str(stat_code)))
       time.sleep(random.randint(180,300)) #alternate ping time between 3 and 5 minutes
 
-def awake(target, debug=False):  
+def awake(target, debug=False,now=None):  
     log = logging.getLogger('werkzeug')
     log.disabled = True
     app.logger.disabled = True  
     t = Thread(target=run)
-    r = Thread(target=ping, args=(target,debug,))
+    r = Thread(target=ping, args=(target,debug,now))
     t.start()
     r.start()

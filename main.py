@@ -7,11 +7,9 @@ import gspread
 import sys
 import numpy as np
 import time
+from datetime import datetime
 import logging
 
-from datetime import datetime
-
-# datetime object containing current date and time
 now = datetime.now()
 
 logging.basicConfig(filename="LogFiles/log {}.log".format(now),
@@ -21,7 +19,7 @@ logging.info("___________NEW RUN STARTING___________")
 logging.info("Code started at: {}".format(now))
 
 import keep_alive
-keep_alive.awake("https://DumBot.drdum.repl.co", True)
+keep_alive.awake("https://DumBot.drdum.repl.co", True,now=now)
 
 from oauth2client.service_account import ServiceAccountCredentials
 pd.options.display.max_rows = 1000
@@ -84,7 +82,7 @@ df_cmd_split = np.array_split(df_cmd_, 2)
 df_cmd_split_1 = df_cmd_split[0]
 df_cmd_split_2 = df_cmd_split[1]
 
-other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?restart_dumbot**':'Restart dumbot after commands have been added.','**?sit**': 'Kick user from discord (Req. normal kick perms)','**?banhammer**': 'Ban user from discord (Req. normal ban perms)'}
+other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?cmds**': 'check commands containing a string.','**?restart_dumbot**':'Restart dumbot after commands have been added.','**?sit**': 'In Development. Kick user from discord (Req. normal kick perms)','**?banhammer**': 'In development. Ban user from discord (Req. normal ban perms)'}
 
 other_cmds_ = []
 
@@ -118,9 +116,10 @@ async def on_message(message):
     #print(split_msg[0].split())
     if msg in cmd_dict.keys():
       await message.channel.send(cmd_dict[msg])
-    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and set(msg) != set('?') and not msg.startswith('? ') and split_msg[0].split()[0] not in other_cmds_:
+    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and set(msg) != set('?') and not msg.startswith('? ') and split_msg[0].split()[0] not in other_cmds_ and split_msg[0].split()[0] != '?reset_nick' and msg.split()[0] != '?cmds':
       await message.channel.send('That command is invalid. Please refer to the  <#874182927905333289> channel for a list of possible commands.')
 
+  
   if msg.startswith('?gm'):
     quote = get_quote()
     await message.channel.send(quote)
@@ -172,6 +171,12 @@ async def on_message(message):
 
     #await message.channel.send('This command is still in development. Please harrass Dr Dum to finish working on this.')
 
+  if msg.startswith('?reset_nick') and str(message.author) == 'Dr Dum#3527':
+    users_taged = message.mentions
+    #print(users_taged[0].nick)
+    await users_taged[0].edit(nick="DumBot")
+    await message.channel.send('Dumbot Username Reset. Rbd is a fucking idiot.')
+
   if msg.startswith('?av'):
     users_taged = message.mentions
     if len(users_taged) == 0:
@@ -183,10 +188,21 @@ async def on_message(message):
       for i in users_taged:
         await message.channel.send(users_taged[counter].avatar_url)
         counter += 1
+        
   if msg.startswith('?check_commands'):
     await message.channel.send('> **List of Database commands:**')
     await message.channel.send(df_cmd_split_1)
     await message.channel.send(df_cmd_split_2.to_string(header=False))
+
+  if msg.startswith('?cmds '):
+    find_cmds = msg.split()[1]
+    print(find_cmds)
+    cmd_match = [s for s in cmd_dict.keys() if find_cmds in s]
+    if len(cmd_match) == 0:
+      await message.channel.send('Sorry, there are no commands matching that string.')
+    else:
+      await message.channel.send(cmd_match)
+    
 
   if msg.startswith('?dumbot'):
     await message.channel.send('> **List of Database commands:**')
