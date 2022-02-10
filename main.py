@@ -9,6 +9,8 @@ import numpy as np
 import time
 from datetime import datetime
 import logging
+import replit
+replit.clear()
 
 now = datetime.now()
 
@@ -116,7 +118,7 @@ async def on_message(message):
     #print(split_msg[0].split())
     if msg in cmd_dict.keys():
       await message.channel.send(cmd_dict[msg])
-    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and set(msg) != set('?') and not msg.startswith('? ') and split_msg[0].split()[0] not in other_cmds_ and split_msg[0].split()[0] != '?reset_nick' and msg.split()[0] != '?cmds':
+    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and set(msg) != set('?') and not msg.startswith('? ') and split_msg[0].split()[0] not in other_cmds_ and split_msg[0].split()[0] != '?reset_nick' and msg.split()[0] != '?cmds' and msg.split()[0] != '?cmdz':
       await message.channel.send('That command is invalid. Please refer to the  <#874182927905333289> channel for a list of possible commands.')
 
   
@@ -167,8 +169,6 @@ async def on_message(message):
     else:
       await message.channel.send('{} is too low in the user hierarchy to use this'.format(message.author))
       
-  
-
     #await message.channel.send('This command is still in development. Please harrass Dr Dum to finish working on this.')
 
   if msg.startswith('?reset_nick') and str(message.author) == 'Dr Dum#3527':
@@ -196,12 +196,22 @@ async def on_message(message):
 
   if msg.startswith('?cmds '):
     find_cmds = msg.split()[1]
-    print(find_cmds)
+    #print(find_cmds)
     cmd_match = [s for s in cmd_dict.keys() if find_cmds in s]
     if len(cmd_match) == 0:
-      await message.channel.send('Sorry, there are no commands matching that string.')
+      await message.channel.send('Sorry, there are no commands containing that string.')
     else:
+      await message.channel.send('{} commands were found that contain that string'.format(len(cmd_match)))
       await message.channel.send(cmd_match)
+
+  if msg.startswith('?cmdz ') and str(message.author) == 'Dr Dum#3527':
+    find_cmds = msg.split()[1]
+    #print(find_cmds)
+    cmd_match = [s for s in cmd_dict.keys() if find_cmds in s]
+    for i in cmd_match:
+      await message.channel.send(cmd_dict[i])
+  elif msg.startswith('?cmdz ') and str(message.author) != 'Dr Dum#3527':
+    await message.channel.send('You are not authorized to use that command.')
     
 
   if msg.startswith('?dumbot'):
@@ -219,4 +229,8 @@ async def on_message(message):
     time.sleep(5)
     await message.channel.send("Dumbot's database has been updated. It may take up to a minute for the commands to become available.")
     os.execl(sys.executable, sys.executable, *sys.argv)
-client.run(token)
+
+try:
+  client.run(token)
+except:
+  os.system("kill 1")

@@ -1856,3 +1856,7 @@
 [01:55:09] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
 [01:55:09] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
 [01:55:09] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response
+[01:55:50] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:148} DEBUG - Keeping shard ID None websocket alive with sequence 99.
+[01:55:50] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_raw_receive
+[01:55:50] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py:432} DEBUG - For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+[01:55:50] {/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py:358} DEBUG - Dispatching event socket_response

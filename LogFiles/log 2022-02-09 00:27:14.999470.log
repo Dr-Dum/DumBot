@@ -1,0 +1,3 @@
+[00:27:14] {main.py:20} INFO - ___________NEW RUN STARTING___________
+[00:27:15] {main.py:21} INFO - Code started at: 2022-02-09 00:27:14.999470
+[00:27:15] {/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py:971} DEBUG - Starting new HTTPS connection (1): dumbot.drdum.repl.co:443
