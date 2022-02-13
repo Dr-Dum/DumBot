@@ -12,6 +12,10 @@ import logging
 import replit
 replit.clear()
 
+'''
+Logging info for troubleshooting
+'''
+
 now = datetime.now()
 
 logging.basicConfig(filename="LogFiles/log {}.log".format(now),
@@ -20,8 +24,17 @@ format= '[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s',da
 logging.info("___________NEW RUN STARTING___________")
 logging.info("Code started at: {}".format(now))
 
+
+'''
+Keep bot alive indefinitely
+'''
+
 import keep_alive
 keep_alive.awake("https://DumBot.drdum.repl.co", True,now=now)
+
+'''
+Connect dumbot to google sheet with the commands
+'''
 
 from oauth2client.service_account import ServiceAccountCredentials
 pd.options.display.max_rows = 1000
@@ -84,7 +97,7 @@ df_cmd_split = np.array_split(df_cmd_, 2)
 df_cmd_split_1 = df_cmd_split[0]
 df_cmd_split_2 = df_cmd_split[1]
 
-other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?cmds**': 'check commands containing a string.','**?restart_dumbot**':'Restart dumbot after commands have been added.','**?sit**': 'In Development. Kick user from discord (Req. normal kick perms)','**?banhammer**': 'In development. Ban user from discord (Req. normal ban perms)'}
+other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?cmds**': 'check commands containing a string.','**?restart_dumbot**':'Restart dumbot after commands have been added.'}
 
 other_cmds_ = []
 
@@ -113,81 +126,21 @@ async def on_message(message):
     return
 
   msg = message.content.lower()
+
+  '''
+  Check if command sent is valid
+  '''
   if msg.startswith('?'):
     split_msg = msg.split('@')
-    #print(split_msg[0].split())
     if msg in cmd_dict.keys():
       await message.channel.send(cmd_dict[msg])
-    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and set(msg) != set('?') and not msg.startswith('? ') and split_msg[0].split()[0] not in other_cmds_ and split_msg[0].split()[0] != '?reset_nick' and msg.split()[0] != '?cmds' and msg.split()[0] != '?cmdz':
+    elif msg not in cmd_dict.keys() and msg not in other_cmds_ and set(msg) != set('?') and not msg.startswith('? ') and split_msg[0].split()[0] not in other_cmds_ and split_msg[0].split()[0] != '?reset_nick' and msg.split()[0] != '?cmds' and msg.split()[0] != '?cmdz' and msg.count("?") == 1:
       await message.channel.send('That command is invalid. Please refer to the  <#874182927905333289> channel for a list of possible commands.')
-
   
-  if msg.startswith('?gm'):
-    quote = get_quote()
-    await message.channel.send(quote)
 
-  if msg.startswith('?sit'):
-    #print(message.author.roles)
-    for role_key in admin_roles.keys():
-      if str(admin_roles[role_key]) in str(message.author.roles):
-        set_allowed = True
-        break
-
-    if set_allowed == True:
-      await message.channel.send('{} has the correct role'.format(message.author))
-      print(message.author.roles)
-      print(message.author.roles.positions)
-      print(message.mentions)
-      print(message.mentions.members)
-      print(message.mentions.members.first())
-      print(message.mentions.top_role)
-      
-      '''
-      if message.member.highestRole.comparePositionTo(message.mentions.members.first().highestRole) > 0:
-        await message.channel.send('Kicking is permitted.')
-      else:
-        await message.channel.send('Too low in heirarchy to kick this user.')
-      '''
-      
-    else:
-      await message.channel.send('{} is too low in the user hierarchy to use this'.format(message.author))
-
-    #await message.channel.send('This command is still in development. Please harrass Dr Dum to finish working on this.')
-    
-  if msg.startswith('?banhammer'):
-    for role_key in admin_roles.keys():
-      if str(admin_roles[role_key]) in str(message.author.roles):
-        set_allowed = True
-        break
-
-    if set_allowed == True:
-      await message.channel.send('{} has the correct role'.format(message.author))
-      if message.member.highestRole.comparePositionTo(message.mentions.members.first().highestRole) > 0:
-        await message.channel.send('Kicking is permitted.')
-      else:
-        await message.channel.send('Too low in heirarchy to kick this user.')
-    else:
-      await message.channel.send('{} is too low in the user hierarchy to use this'.format(message.author))
-      
-    #await message.channel.send('This command is still in development. Please harrass Dr Dum to finish working on this.')
-
-  if msg.startswith('?reset_nick') and str(message.author) == 'Dr Dum#3527':
-    users_taged = message.mentions
-    #print(users_taged[0].nick)
-    await users_taged[0].edit(nick="DumBot")
-    await message.channel.send('Dumbot Username Reset. Rbd is a fucking idiot.')
-
-  if msg.startswith('?av'):
-    users_taged = message.mentions
-    if len(users_taged) == 0:
-      await message.channel.send(message.author.avatar_url)
-    elif len(users_taged) == 1:
-      await message.channel.send(users_taged[0].avatar_url)
-    elif len(users_taged) > 1:
-      counter = 0
-      for i in users_taged:
-        await message.channel.send(users_taged[counter].avatar_url)
-        counter += 1
+  '''
+  Commands to check DB info or refresh commands
+  '''
         
   if msg.startswith('?check_commands'):
     await message.channel.send('> **List of Database commands:**')
@@ -212,7 +165,6 @@ async def on_message(message):
       await message.channel.send(cmd_dict[i])
   elif msg.startswith('?cmdz ') and str(message.author) != 'Dr Dum#3527':
     await message.channel.send('You are not authorized to use that command.')
-    
 
   if msg.startswith('?dumbot'):
     await message.channel.send('> **List of Database commands:**')
@@ -229,6 +181,32 @@ async def on_message(message):
     time.sleep(5)
     await message.channel.send("Dumbot's database has been updated. It may take up to a minute for the commands to become available.")
     os.execl(sys.executable, sys.executable, *sys.argv)
+
+  '''
+  Extra commands
+  '''
+
+  if msg.startswith('?gm'):
+    quote = get_quote()
+    await message.channel.send(quote)
+
+  if msg.startswith('?reset_nick') and str(message.author) == 'Dr Dum#3527':
+    users_taged = message.mentions
+    #print(users_taged[0].nick)
+    await users_taged[0].edit(nick="DumBot")
+    await message.channel.send('Dumbot Username Reset. Rbd is a fucking idiot.')
+
+  if msg.startswith('?av'):
+    users_taged = message.mentions
+    if len(users_taged) == 0:
+      await message.channel.send(message.author.avatar_url)
+    elif len(users_taged) == 1:
+      await message.channel.send(users_taged[0].avatar_url)
+    elif len(users_taged) > 1:
+      counter = 0
+      for i in users_taged:
+        await message.channel.send(users_taged[counter].avatar_url)
+        counter += 1
 
 try:
   client.run(token)
