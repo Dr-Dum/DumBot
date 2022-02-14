@@ -93,9 +93,10 @@ df_cmd = pd.DataFrame({'Commands': cmd_list})
 df_cmd_ = df_cmd.sort_values('Commands',ascending=True).reset_index(drop=True)
 #troub_msg = df_cmd_.loc[df_cmd_['Commands'] == 'troublemsg']
 #print(troub_msg) 
-df_cmd_split = np.array_split(df_cmd_, 2)
+df_cmd_split = np.array_split(df_cmd_, 3)
 df_cmd_split_1 = df_cmd_split[0]
 df_cmd_split_2 = df_cmd_split[1]
+df_cmd_split_2 = df_cmd_split[2]
 
 other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?cmds**': 'check commands containing a string.','**?restart_dumbot**':'Restart dumbot after commands have been added.'}
 
@@ -146,6 +147,7 @@ async def on_message(message):
     await message.channel.send('> **List of Database commands:**')
     await message.channel.send(df_cmd_split_1)
     await message.channel.send(df_cmd_split_2.to_string(header=False))
+    await message.channel.send(df_cmd_split_3.to_string(header=False))
 
   if msg.startswith('?cmds '):
     find_cmds = msg.split()[1]
@@ -169,8 +171,8 @@ async def on_message(message):
   if msg.startswith('?dumbot'):
     await message.channel.send('> **List of Database commands:**')
     await message.channel.send(df_cmd_split_1)
-    #await message.channel.send(df_cmd_split_2)
     await message.channel.send(df_cmd_split_2.to_string(header=False))
+    await message.channel.send(df_cmd_split_3.to_string(header=False))
     await message.channel.send('> **List of Misc. Commands:**')
     await message.channel.send(df_other_cmds)
     await message.channel.send(troub_msg)
