@@ -7,8 +7,8 @@ import gspread
 import sys
 import numpy as np
 import time
-from datetime import datetime
-import logging
+#from datetime import datetime
+#import logging
 import replit
 replit.clear()
 
@@ -16,21 +16,21 @@ replit.clear()
 Logging info for troubleshooting
 '''
 
-now = datetime.now()
+#now = datetime.now()
 
-logging.basicConfig(filename="LogFiles/log {}.log".format(now),
-level=logging.DEBUG, 
-format= '[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s',datefmt='%H:%M:%S')
-logging.info("___________NEW RUN STARTING___________")
-logging.info("Code started at: {}".format(now))
+#logging.basicConfig(filename="LogFiles/log {}.log".format(now),
+#level=logging.DEBUG, 
+#format= '[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s',datefmt='%H:%M:%S')
+#logging.info("___________NEW RUN STARTING___________")
+#logging.info("Code started at: {}".format(now))
 
 
 '''
 Keep bot alive indefinitely
 '''
 
-import keep_alive
-keep_alive.awake("https://DumBot.drdum.repl.co", True,now=now)
+#import keep_alive
+#keep_alive.awake("https://DumBot.drdum.repl.co", True,now=now)
 
 '''
 Connect dumbot to google sheet with the commands
@@ -96,7 +96,7 @@ df_cmd_ = df_cmd.sort_values('Commands',ascending=True).reset_index(drop=True)
 df_cmd_split = np.array_split(df_cmd_, 3)
 df_cmd_split_1 = df_cmd_split[0]
 df_cmd_split_2 = df_cmd_split[1]
-df_cmd_split_2 = df_cmd_split[2]
+df_cmd_split_3 = df_cmd_split[2]
 
 other_cmds = {'**?gm**':'Send and inspirational message to the boys.','**?av**':'Return the avatar of all mentioned users. If no user is mentioned, it returns the author avatar','**?check_commands**':'Check the available dumbot database commands.','**?dumbot**':'Commands to check all possible DumBot commands','**?cmds**': 'check commands containing a string.','**?restart_dumbot**':'Restart dumbot after commands have been added.'}
 
@@ -125,9 +125,9 @@ async def on_message(message):
   #check to make sure message is not from bot
   if message.author == client.user:
     return
-
+  
   msg = message.content.lower()
-
+  print(msg)
   '''
   Check if command sent is valid
   '''
@@ -157,7 +157,7 @@ async def on_message(message):
       await message.channel.send('Sorry, there are no commands containing that string.')
     else:
       await message.channel.send('{} commands were found that contain that string'.format(len(cmd_match)))
-      await message.channel.send(cmd_match)
+      await message.channel.send(sorted(cmd_match))
 
   if msg.startswith('?cmdz ') and str(message.author) == 'Dr Dum#3527':
     find_cmds = msg.split()[1]
@@ -210,7 +210,7 @@ async def on_message(message):
         await message.channel.send(users_taged[counter].avatar_url)
         counter += 1
 
-try:
-  client.run(token)
-except:
-  os.system("kill 1")
+#try:
+client.run(token)
+#except:
+#os.system("kill 1")
