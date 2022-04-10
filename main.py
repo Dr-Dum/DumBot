@@ -127,7 +127,7 @@ async def on_message(message):
     return
   
   msg = message.content.lower()
-  print(msg)
+  
   '''
   Check if command sent is valid
   '''
